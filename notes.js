@@ -1,5 +1,26 @@
+const fs = require('fs');
 const addNote = (title, body) => {
-    console.log('Adding note', title, body);
+    var notes = [];
+    const note = {
+        title,
+        body
+    };
+
+    try {
+        const notesString = fs.readFileSync('notes-data.json');
+        notes = JSON.parse(notesString);
+    } catch (e) {
+        console.log(e);
+    }
+
+    var duplicateNotes = notes.filter((note) => note.title === title);
+
+    if(duplicateNotes.length === 0) {
+        notes.push(note);
+        fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+    } else {
+        console.log('Note with this title already exist!!!!');
+    } 
 };
 const getAll = () => {
     console.log('Getting all notes');
