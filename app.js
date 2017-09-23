@@ -1,6 +1,7 @@
-// Run npm init command to start using npm packages and create package.json file.
-// npm install packagename --save : is used to update package.json file
-// To require npm package- use same name which appears in package.jsonfile ..eg: require('lodash')
+// NodeMon watches the changes in files and reload the application.
+// npm install nodemon -g  --- -g allows us to install npm package globally
+// run- nodemon filename(app.js) to start keeping track of file changes and load application again
+
 const fs = require('fs');
 const os = require('os');
 const notes = require('./notes.js');
