@@ -1,8 +1,21 @@
-// NodeMon watches the changes in files and reload the application.
-// npm install nodemon -g  --- -g allows us to install npm package globally
-// run- nodemon filename(app.js) to start keeping track of file changes and load application again
-
+// "process" work in a node app same as like window in webapp
+// Arguments passed by user to node application resides in process.argv
 const fs = require('fs');
-const os = require('os');
+const _ = require('lodash');
+
 const notes = require('./notes.js');
-var user = os.userInfo();
+
+var command = process.argv[2];
+
+if(command === 'add') {
+    console.log('Adding new note..');
+} else if(command === 'list') {
+    console.log('Listing all notes..');
+} else if(command === 'read') {
+    console.log('Reading notes..');
+} else if(command === 'remove') {
+    console.log('Removing notes..');
+} else {
+    console.log('Command not recognized');
+}
+console.log(process.argv);
