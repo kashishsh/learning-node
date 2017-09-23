@@ -15,12 +15,22 @@ if(command === 'add') {
     } else {
         console.log('Note title already in use.. please try a different one..!!!');
     }
-} else if(command === 'list') {
-    notes.getAll();
+} else if(command === 'list') {    
+    console.log('Available notes are: ', notes.getAll());
 } else if(command === 'read') {
-    notes.getNote(argv.title);
+    var note = notes.getNote(argv.title);
+    if(note) {
+        console.log(note);
+    } else {
+        console.log('Note with this title does not exists');
+    }    
 } else if(command === 'remove') {
-    notes.removeNote(argv.title);
+    var status = notes.removeNote(argv.title);
+    if(status) {
+        console.log('Note deleted!!');
+    } else {
+        console.log('Note with this title does not exists');
+    }
 } else {
     console.log('Command not recognized');
 }
